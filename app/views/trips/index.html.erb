@@ -1,0 +1,6 @@
+<% @trips.each do |trip| %>
+  <div id="number<%= trip.id %>">
+    <%= trip.name %>
+    <%= link_to "View Trip", trip_path(trip) %>
+  </div>
+<% end %>
