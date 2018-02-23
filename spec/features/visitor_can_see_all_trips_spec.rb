@@ -4,11 +4,11 @@ describe "As a Visitor" do
   describe "when I visit the trips index" do
     describe "I click on trip show" do
       it "I see a list of trails included in the trip and trail name, address and length" do
-        trip = Trip.create
+        trip = Trip.create(name: "Girls Trip")
         trail_1 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
         trail_2 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
         trip.trails << [trail_1, trail_2]
-        
+
         visit trips_path
         click_on "View Trip"
 
