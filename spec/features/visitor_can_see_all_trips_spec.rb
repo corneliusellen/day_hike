@@ -26,6 +26,8 @@ describe "As a Visitor" do
       it "I see the planned total hiking distance" do
         visit trip_path(trip)
         expect(page).to have_content("Total Distance: 7")
+        expect(page).to have_content("Average Distance: 3.5")
+        expect(page).to have_content("Longest Distance: 5")
       end
     end
   end

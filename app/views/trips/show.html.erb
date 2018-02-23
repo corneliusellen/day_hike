@@ -1,5 +1,7 @@
 <%= @trip.name %>
 Total Distance: <%= @trip.total_distance %> <br>
+Average Distance: <%= @trip.average_distance %> <br>
+Longest Distance: <%= @trip.longest_distance %> <br>
 <% @trip.trails.each do |trail| %>
   <%= trail.name %> <br>
   <%= trail.address %> <br>

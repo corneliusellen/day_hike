@@ -5,4 +5,12 @@ class Trail < ApplicationRecord
   def self.total_length
     sum(:length)
   end
+
+  def self.average_length
+    average(:length)
+  end
+
+  def self.longest
+    maximum(:length)
+  end
 end

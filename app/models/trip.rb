@@ -5,4 +5,12 @@ class Trip < ApplicationRecord
   def total_distance
     trails.total_length
   end
+
+  def average_distance
+    trails.average_length
+  end
+
+  def longest_distance
+    trails.longest
+  end
 end
