@@ -3,14 +3,16 @@ require 'rails_helper'
 describe "As a Visitor" do
   describe "when I visit the trips index" do
     describe "I click on trip show" do
-      it "I see a list of trails included in the trip and trail name, address and length" do
-        trip = Trip.create(name: "Girls Trip")
-        trail_1 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
-        trail_2 = Trail.create(name: "Larkspur", address: "RMNP", length: 5)
-        trip.trails << [trail_1, trail_2]
+      trip = Trip.create(name: "Girls Trip")
+      trail_1 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
+      trail_2 = Trail.create(name: "Larkspur", address: "RMNP", length: 5)
+      trip.trails << [trail_1, trail_2]
 
+      it "I see a list of trails included in the trip and trail name, address and length" do
         visit trips_path
-        click_on "View Trip"
+        within("#number#{trip.id}") do
+          click_on "View Trip"
+        end
 
         expect(current_path).to eq(trip_path(trip))
         expect(page).to have_content(trail_1.name)
@@ -22,7 +24,8 @@ describe "As a Visitor" do
       end
 
       it "I see the planned total hiking distance" do
-        expect(page).to have_content("Trip distance: 7")
+        visit trip_path(trip)
+        expect(page).to have_content("Total Distance: 7")
       end
     end
   end
