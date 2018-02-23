@@ -6,7 +6,7 @@ describe "As a Visitor" do
       it "I see a list of trails included in the trip and trail name, address and length" do
         trip = Trip.create(name: "Girls Trip")
         trail_1 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
-        trail_2 = Trail.create(name: "Larkspur", address: "RMNP", length: 2)
+        trail_2 = Trail.create(name: "Larkspur", address: "RMNP", length: 5)
         trip.trails << [trail_1, trail_2]
 
         visit trips_path
@@ -19,6 +19,10 @@ describe "As a Visitor" do
         expect(page).to have_content(trail_2.name)
         expect(page).to have_content(trail_2.address)
         expect(page).to have_content(trail_2.length)
+      end
+
+      it "I see the planned total hiking distance" do
+        expect(page).to have_content("Trip distance: 7")
       end
     end
   end
